@@ -33,12 +33,14 @@ app.get("/confirm-close", async (req, res) => {
   try {
     const response = await fetch(PROOF_API_URL);
     const data = await response.json();
+    console.log("Received proof:", data.proof);
 
     const tx = await contract.confirmAllCloseRequests(data.proof);
     await tx.wait();
 
     res.send({ success: true, txHash: tx.hash });
   } catch (error) {
+    console.error("Execution error:", error);
     res.status(500).send({ success: false, error: error.message });
   }
 });
