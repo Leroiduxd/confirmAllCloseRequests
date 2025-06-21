@@ -10,6 +10,6 @@
     "dotenv": "^16.3.1",
     "ethers": "^6.8.1",
     "express": "^4.19.2",
-    "node-fetch": "^3.3.2"
+    "node-fetch-native": "^1.0.1"
   }
 }

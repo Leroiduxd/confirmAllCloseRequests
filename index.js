@@ -1,5 +1,5 @@
 import express from "express";
-import fetch from "node-fetch";
+import fetch from "node-fetch-native";
 import { ethers } from "ethers";
 import dotenv from "dotenv";
 
@@ -31,6 +31,7 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, wallet);
 
 app.get("/confirm-close", async (req, res) => {
   try {
+    console.log("Calling:", PROOF_API_URL);
     const response = await fetch(PROOF_API_URL);
     const data = await response.json();
     console.log("Received proof:", data.proof);
